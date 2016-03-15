@@ -17,11 +17,12 @@
 
         <!-- javascript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="vendors/bower_components/typed.js/dist/typed.min.js" type="text/javascript"></script>
 
         <!-- CSS -->
         <link href="css/app.min.1.css" rel="stylesheet">
         <link href="css/app.min.2.css" rel="stylesheet">
-        <link href="css/crowCrousal.css" rel="stylesheet">
+        <link href="css/typed.css" rel="stylesheet">
 
 
         <script>
@@ -29,8 +30,8 @@
             var headerHeight =  "";
            $( document ).ready(function() {
                 console.log( 'ready!' );
-                headerHeight = $('.bheader').outerHeight();
-                console.log(""+headerHeight);
+                headerHeight = $('.bheader').innerHeight();
+                console.log("header height : "+headerHeight);
             });
 
           
@@ -51,6 +52,33 @@
                 }
             });
 
+
+             $(function(){
+
+        $("#typed").typed({
+            // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
+            stringsElement: $('#typed-strings'),
+            typeSpeed: 30,
+            backDelay: 500,
+            loop: true,
+            contentType: 'html', // or text
+            // defaults to false for infinite loop
+            loopCount: false,
+            callback: function(){ foo(); },
+            resetCallback: function() { newTyped(); }
+        });
+
+        $(".reset").click(function(){
+            $("#typed").typed('reset');
+        });
+
+    });
+
+
+    function newTyped(){ /* A new typed object */ }
+
+    function foo(){ console.log("Callback"); }
+
         </script>
 
 
@@ -60,7 +88,7 @@
     </head>
 
     <body>
-        <header id="header"  class="bheader clearfix" data-current-skin="purple" style="position:relative !important; height:300px;">
+        <header id="header"  class="bheader clearfix" data-current-skin="purple" style="position:relative !important;  height:240px !important;">
 
             <ul class="header-inner">
                 <li class="logo">
@@ -101,21 +129,49 @@
                 </li>
             </ul>
 
+            
 
-            <div class="m-t-25 m-b-25 p-25">
+            <div class="">
 
-                <div class="col-sm-offset-3 col-sm-6  hidden-xs">
+                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-6">
                     
-                    <h2>
-                        <div class="c-white m-25">
-                            Search Some text text
-                        </div>
-                    </h2>
+                 
+                        <h3 class="c-white m-15 hidden-xs" style = "text-align:center;">
+
+                            <div class="type-wrap">  
+                       
+                           What kind of job are you looking for? <br>It is a 
+                                <div id="typed-strings">
+                                    <u><p><em>Sales</em></p>
+                                    <p><em>Engineer</em></p>
+                                    <p><em>Marketing</em></p>
+                                    <p><em>Consultation</em></p>
+                                    <p><em>Government</em></p>
+                                    <p><em>PSU</em></p> </u>                                 
+                                </div>
+                                <span id="typed" style="white-space:pre;"> </span>Jobs ??<br/>
+
+                            Try us !!
+
+
+                            </div>
+                        </h3>
                     
-                    <div class="col-sm-offset-1 col-sm-10">
-                        <div class="f-16 f-500 m-25">
-                            <input type="text" class="fc form-control brd-2"  placeholder="Search" id="srch" style="padding: 6px 12px;">
+                    
+                    <div class="col-sm-offset-1 col-sm-11 col-xs-offset-1 col-xs-11 c-white  f-18 m-15">
+                       
+                         Looking for 
+                         <div class="input-group">
+                               <input type="text" class="f-16 form-control brd-2"  placeholder="Search" id="srch" style="padding: 6px 12px;">
+                               <span class="input-group-btn">
+                                    <button class="btn btn-secondary btn-lg bgm-teal" type="button" style="padding: 6px 12px;height: 35px;">
+                                        <i class="tm-icon zmdi zmdi-arrow-forward"></i>
+                                    </button>
+                               </span>
                         </div>
+                            
+                       
+                        
                     </div>
                     
                     
@@ -432,5 +488,17 @@
                 </div>
             </section>
         </section>
+
+        <footer id="footer">
+            Copyright © 2015 Material Admin
+            
+            <ul class="f-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </footer>
     </body>
 </HTML>
